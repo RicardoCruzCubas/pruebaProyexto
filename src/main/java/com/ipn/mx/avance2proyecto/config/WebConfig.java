@@ -9,11 +9,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/*")
-                // ✅ CAMBIO CLAVE: Usamos 'allowedOriginPatterns' con asterisco
-                // Esto permite Localhost, Netlify, Render, tu celular... ¡Todo!
-                // y sigue funcionando con .allowCredentials(true)
-                .allowedOriginPatterns("") 
+        registry.addMapping("/**")
+                .allowedOrigins(
+                        "http://localhost:5173",
+                        "https://illustrious-clafoutis-8ef255.netlify.app"
+                )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
