@@ -36,8 +36,8 @@ RUN addgroup -g 1001 -S appgroup && \
 # Copiar el JAR compilado desde la etapa build
 COPY --from=builder /build/target/*.jar app.jar
 
-# Copiar el certificado SSL para Yugabyte
-COPY --from=builder /build/root.crt /app/root.crt
+# Copiar el certificado SSL para Yugabyte (desde el contexto raíz)
+COPY root.crt /app/root.crt
 
 # Cambiar permisos
 RUN chown -R appuser:appgroup /app && \
