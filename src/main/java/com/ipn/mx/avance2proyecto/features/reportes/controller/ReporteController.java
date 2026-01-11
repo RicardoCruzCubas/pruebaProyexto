@@ -18,6 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@CrossOrigin(
+    origins = {
+        "http://localhost:5173",
+        "https://illustrious-clafoutis-8ef255.netlify.app"
+    }
+)
+
+
 @RestController
 @RequestMapping("/api/reportes")
 @RequiredArgsConstructor
