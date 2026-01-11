@@ -9,9 +9,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Esto libera el acceso para todos tus controladores bajo el prefijo /api
-        registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:5173") // El puerto de tu Frontend
+        registry.addMapping("/api/*")
+                // ✅ CAMBIO CLAVE: Usamos 'allowedOriginPatterns' con asterisco
+                // Esto permite Localhost, Netlify, Render, tu celular... ¡Todo!
+                // y sigue funcionando con .allowCredentials(true)
+                .allowedOriginPatterns("") 
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
